@@ -10,3 +10,4 @@
 3. Ask "What Would the User Do?": 개발자들은 다른 사람들도 우리와 같이 생각한다고 착각한다(false consensus bias). 사용자들의 생각을 읽기 위해서는 그들을 관찰하는 것이 중요하다.
 4. Automate Your Coding Standard: 코드 포맷팅(Code Formatting)은 과제 진행 중 가장 포기하기 쉬운 문제이다. 코드를 표준화 하는 것은 다른 개발자들과 소통하기 위함이며, 안티패턴을 빠르게 찾고 방지하기 위함이니, 이를 자동화 하고 동적으로 적용할 수 있도록 하자.
 5. Beauty Is in Simplicity: Readability, Maintainability, Speed of development, The elusive quality of beauty의 목표를 달성하기 위해 궁극적으로 Simple하게 작성하는 것이 중요하다. 각각의 파트가 간단한 responsibility와 간단한 relationship을 맺고 있어야한다.
+6. Before You Refactor: 기존 코드를 점검하고 테스트를 재작성하기. 모든 것을 재작성 하지 않기. 한번에 확 변화시키기보다는 조금씩 여러번 변화하기. 테스트에 통과하는지 지속 점검하기. 새로운 기술이라고 무조건적으로 적용하지 않기.
