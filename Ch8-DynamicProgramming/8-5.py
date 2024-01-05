@@ -1,4 +1,5 @@
 # Ex1
+
 x = int(input())
 
 d = [0] * (x+1)
