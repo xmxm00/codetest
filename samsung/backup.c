@@ -1,4 +1,5 @@
 #include <stdio.h>
+// #include <stdlib.h>
 
 const int MAX_POWER = 3000000;
 
@@ -82,8 +83,33 @@ int main(void) {
             result += tmp_a + b;
           }
 
-        } else {
-          result += a + b;
+        } else if (a >= b) { // b를 선택
+          result += b;
+          int tmp_idx = b_idx;
+          a = MAX_POWER;
+
+          for (int idx = 0; idx < len[2]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[2][idx][2] - myStore[2][idx][0] < a) {
+              a = myStore[2][idx][2] - myStore[2][idx][0];
+            }
+          }
+          result += a;
+        } else { // a를 선택
+          result += a;
+
+          int tmp_idx = a_idx;
+          b = MAX_POWER;
+
+          for (int idx = 0; idx < len[2]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[2][idx][2] - myStore[2][idx][1] < b) {
+              b = myStore[2][idx][2] - myStore[2][idx][1];
+            }
+          }
+          result += b;
         }
       } else if (len[2] == 0) { // a와 c 능력자가 선택되지 않음
         int a_idx = 0, c_idx = 0;
@@ -120,8 +146,33 @@ int main(void) {
             result += a + tmp_c;
           }
 
-        } else {
-          result += a + c;
+        } else if (a >= c) { // c를 선택
+          result += c;
+          int tmp_idx = c_idx;
+          a = MAX_POWER;
+
+          for (int idx = 0; idx < len[1]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[1][idx][1] - myStore[1][idx][0] < a) {
+              a = myStore[1][idx][1] - myStore[1][idx][0];
+            }
+          }
+          result += a;
+        } else { // a를 선택
+          result += a;
+
+          int tmp_idx = a_idx;
+          c = MAX_POWER;
+
+          for (int idx = 0; idx < len[1]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[1][idx][1] - myStore[1][idx][2] < c) {
+              c = myStore[1][idx][1] - myStore[1][idx][2];
+            }
+          }
+          result += c;
         }
       } else { // a 능력자만 선택되지 않음
         int b = MAX_POWER, c = MAX_POWER;
@@ -163,16 +214,18 @@ int main(void) {
         if (b_idx == c_idx) { // 하필 같은 행...
           int tmp_idx = b_idx;
           int tmp_b = b, tmp_c = c;
-          b = MAX_POWER, c = MAX_POWER;
+          b_idx = 0, c_idx = 0, b = MAX_POWER, c = MAX_POWER;
 
           for (int idx = 0; idx < len[0]; idx++) {
             if (idx == tmp_idx)
               continue;
             if (myStore[0][idx][0] - myStore[0][idx][1] < b) {
               b = myStore[0][idx][0] - myStore[0][idx][1];
+              b_idx = idx;
             }
             if (myStore[0][idx][0] - myStore[0][idx][2] < c) {
               c = myStore[0][idx][0] - myStore[0][idx][2];
+              c_idx = idx;
             }
           }
           if (b + tmp_c >= c + tmp_b) {
@@ -181,8 +234,35 @@ int main(void) {
             result += b + tmp_c;
           }
 
-        } else {
-          result += b + c;
+        } else if (b >= c) { // c를 선택
+          result += c;
+          int tmp_idx = c_idx;
+          b_idx = 0, b = MAX_POWER;
+
+          for (int idx = 0; idx < len[0]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[0][idx][0] - myStore[0][idx][1] < b) {
+              b = myStore[0][idx][0] - myStore[0][idx][1];
+              b_idx = idx;
+            }
+          }
+          result += b;
+        } else { // b를 선택
+          result += b;
+
+          int tmp_idx = b_idx;
+          c_idx = 0, c = MAX_POWER;
+
+          for (int idx = 0; idx < len[0]; idx++) {
+            if (idx == tmp_idx)
+              continue;
+            if (myStore[0][idx][0] - myStore[0][idx][2] < c) {
+              c = myStore[0][idx][0] - myStore[0][idx][2];
+              c_idx = idx;
+            }
+          }
+          result += c;
         }
       } else { // b 능력자만 선택되지 않음
         int a = MAX_POWER, c = MAX_POWER;
