@@ -22,7 +22,7 @@ public class Main {
             if(pos < 0) {
                 pos = -pos - 1;
             }
-            list.add(pos, input);
+            list.add(pos, Integer.valueOf(input));
             sb.append(list.get(i / 2)).append("\n");
         }
         bw.write(sb.toString());
