@@ -1,5 +1,6 @@
 .DS_Store
 .vscode
 */*.out
+*.iml
 .idea
 baekjoon/java/out
